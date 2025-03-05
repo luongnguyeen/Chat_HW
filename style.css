@@ -1,3 +1,4 @@
+/* styles.css */
 body {
     background-color: pink;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -6,7 +7,7 @@ body {
     padding: 0;
 }
 
-.screen {
+#start-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,46 +17,78 @@ body {
 
 .heart {
     width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    transform: rotate(-45deg);
     animation: heartbeat 1s infinite;
 }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+.heart::before,
+.heart::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
 }
 
-.hint-text {
-    font-size: 20px;
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: 50px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1) rotate(-45deg); }
+    50% { transform: scale(1.2) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}
+
+.start-text {
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 20px;
+    margin-top: 20px;
 }
 
 .hidden {
     display: none;
 }
 
-.container {
+#main-content {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
 }
 
-.left, .right {
-    width: 45%;
-}
-
-#greeting-text {
+.left-column {
+    width: 50%;
     font-size: 24px;
-    white-space: pre-line;
+    text-align: left;
+    padding: 20px;
 }
 
-#next-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
+.right-column {
+    width: 50%;
+    position: relative;
+}
+
+#tree {
+    width: 200px;
+    height: 300px;
+    background-color: green;
+    position: relative;
+}
+
+@keyframes fall {
+    from { transform: translateY(0); }
+    to { transform: translateY(300px); opacity: 0; }
 }
 
 footer {
