@@ -4,38 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Women's Day</title>
+    <link rel="icon" href="heart.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div id="start-screen" class="screen">
+    <div class="start-screen">
         <div class="heart"></div>
-        <p id="start-text">Cùng khám phá Emmm nhé</p>
+        <p class="explore-text">Cùng khám phá Emmm nhé</p>
     </div>
-    <div id="main-content" class="screen" style="display: none;">
-        <div class="container">
-            <div class="left-column">
-                <p id="typing-text"></p>
-                <button id="next-button" style="display: none;">Tiếp theo</button>
-            </div>
-            <div class="right-column">
-                <div class="image-gallery">
-                    <div class="image-box">
-                        <img src="images/images1.jpg" alt="Ảnh 1">
-                    </div>
-                    <div class="image-box">
-                        <img src="images/images2.jpg" alt="Ảnh 2">
-                    </div>
-                    <div class="image-box">
-                        <img src="images/images3.jpg" alt="Ảnh 3">
-                    </div>
-                    </div>
-            </div>
-        </div>
+    <div class="main-content">
+        <div class="typing-text"></div>
+        <div class="image-sphere"></div>
+        <button class="next-button">Tiếp theo</button>
     </div>
     <footer>
         <p>Made by  L.Nguyeen</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
