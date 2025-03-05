@@ -23,32 +23,65 @@ function typeText(elementId, text, speed, callback) {
 }
 
 function drawTree() {
-    const canvas = document.getElementById("treeCanvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = 300;
-    canvas.height = 400;
-    
     // Vẽ thân cây
-    ctx.fillStyle = "#8B4513";
-    ctx.fillRect(140, 200, 20, 100);
-    
-    // Vẽ tán lá hình trái tim
-    function drawHeart(x, y, color) {
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.bezierCurveTo(x - 15, y - 15, x - 30, y + 10, x, y + 30);
-        ctx.bezierCurveTo(x + 30, y + 10, x + 15, y - 15, x, y);
-        ctx.fill();
-    }
-    
-    const colors = ["red", "pink", "purple", "orange", "yellow"];
+    ctx.beginPath();
+    ctx.moveTo(150, 400);
+    ctx.lineTo(150, 100);
+    ctx.strokeStyle = 'brown';
+    ctx.lineWidth = 10;
+    ctx.stroke();
+
+    // Vẽ cành cây
+    ctx.beginPath();
+    ctx.moveTo(150, 150);
+    ctx.lineTo(250, 100);
+    ctx.strokeStyle = 'brown';
+    ctx.lineWidth = 8;
+    ctx.stroke();
+
+    // Vẽ lá (hình trái tim)
     for (let i = 0; i < 10; i++) {
-        let x = 120 + Math.random() * 60;
-        let y = 100 + Math.random() * 80;
-        let color = colors[Math.floor(Math.random() * colors.length)];
-        drawHeart(x, y, color);
+        const x = Math.random() * 200 + 50;
+        const y = Math.random() * 100 + 50;
+        const size = Math.random() * 20 + 10;
+        const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+        hearts.push({ x, y, size, color, speed: Math.random() * 2 + 1 });
     }
+
+    animateHearts();
+}
+
+function drawHeart(x, y, size, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(Math.PI / 4);
+    ctx.beginPath();
+    ctx.moveTo(0, size);
+    ctx.bezierCurveTo(size / 2, size / 4, size, -size / 3, 0, -size);
+    ctx.bezierCurveTo(-size, -size / 3, -size / 2, size / 4, 0, size);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.restore();
+}
+
+function animateHearts() {
+    ctx.clearRect(0, 0, treeCanvas.width, treeCanvas.height);
+    drawTree(); // Vẽ lại cây để không bị mất cành
+
+    hearts.forEach((heart, index) => {
+        drawHeart(heart.x, heart.y, heart.size, heart.color);
+        heart.y += heart.speed;
+        if (heart.y > treeCanvas.height) {
+            hearts.splice(index, 1);
+            const x = Math.random() * 200 + 50;
+            const y = Math.random() * 100 + 50;
+            const size = Math.random() * 20 + 10;
+            const color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            hearts.push({ x, y, size, color, speed: Math.random() * 2 + 1 });
+        }
+    });
+
+    requestAnimationFrame(animateHearts);
 }
 
 function nextScreen() {
