@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <div id="start-screen" class="screen">
+        <img src="assets/heart.png" alt="Heart" class="heart">
+        <p class="hint-text" onclick="startExperience()">Cùng khám phá Emmm nhé</p>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <div class="container">
+            <div class="left">
+                <p id="greeting-text"></p>
+            </div>
+            <div class="right">
+                <canvas id="treeCanvas"></canvas>
+            </div>
+        </div>
+        <button id="next-btn" class="hidden" onclick="nextScreen()">Tiếp tục</button>
+    </div>
+    
+    <footer>
+        Made by 💓 L.Nguyeen
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
