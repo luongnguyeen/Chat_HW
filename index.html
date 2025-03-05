@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Women's Day</title>
-    <link rel="icon" href="heart.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="start-screen">
+    <div id="start-screen" class="screen">
         <div class="heart"></div>
-        <p class="explore-text">Cùng khám phá Emmm nhé</p>
+        <p class="message">Cùng khám phá Emmm nhé</p>
     </div>
-    <div class="main-content">
-        <div class="typing-text"></div>
-        <div class="image-sphere"></div>
-        <button class="next-button">Tiếp theo</button>
+    <div id="main-screen" class="screen hidden">
+        <div id="greeting"></div>
+        <div id="image-gallery" class="gallery"></div>
+        <button id="next-button">Tiếp theo</button>
     </div>
     <footer>
         <p>Made by  L.Nguyeen</p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
