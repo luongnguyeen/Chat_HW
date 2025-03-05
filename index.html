@@ -6,16 +6,12 @@
     <title>Happy Women's Day</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <!-- Start Screen -->
     <div id="start-screen" class="screen">
         <div class="heart"></div>
-        <p class="prompt">Cùng khám phá Emmm nhé</p>
+        <p class="start-text">Cùng khám phá Emmm nhé</p>
     </div>
-
-    <!-- Main Content -->
     <div id="main-content" class="hidden">
         <div class="container">
             <div class="left-column">
@@ -23,21 +19,17 @@
             </div>
             <div class="right-column">
                 <div class="image-box">
-                    <img src="image1.jpg" class="gallery-item" onclick="openImage(this.src)">
-                    <img src="image2.jpg" class="gallery-item" onclick="openImage(this.src)">
-                    <img src="image3.jpg" class="gallery-item" onclick="openImage(this.src)">
+                    <img src="image1.jpg" alt="Hình ảnh 1" class="gallery-image">
+                    <img src="image2.jpg" alt="Hình ảnh 2" class="gallery-image">
+                    <img src="image3.jpg" alt="Hình ảnh 3" class="gallery-image">
                 </div>
             </div>
         </div>
-        <button id="next-btn" class="hidden">Tiếp tục</button>
+        <button id="next-button" class="hidden">Tiếp tục</button>
     </div>
-
-    <footer>Made by 💓 L.Nguyeen</footer>
-
-    <!-- Modal for Image Display -->
-    <div id="image-modal" class="modal hidden">
-        <span class="close" onclick="closeImage()">&times;</span>
-        <img class="modal-content" id="modal-img">
-    </div>
+    <footer>
+        Made by 💓 L.Nguyeen
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
