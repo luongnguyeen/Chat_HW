@@ -1,17 +1,16 @@
 const startScreen = document.getElementById('start-screen');
-const contentScreen = document.getElementById('content-screen');
-const finalScreen = document.getElementById('final-screen');
+const mainContent = document.getElementById('main-content');
+const startText = document.getElementById('start-text');
 const heart = document.querySelector('.heart');
-const startText = document.querySelector('.start-text');
 const typingText = document.getElementById('typing-text');
 const nextButton = document.getElementById('next-button');
-const galleryImages = document.querySelectorAll('.gallery-image');
+const imageBoxes = document.querySelectorAll('.image-box');
 
 const messages = [
     "Chúc em ngày 8/3 thật nhiều niềm vui và hạnh phúc!",
-    "Em là người con gái tuyệt vời nhất mà anh từng gặp.",
-    "Anh yêu em nhiều lắm!",
-    // Thêm lời chúc của bạn vào đây
+    "Em là người con gái tuyệt vời nhất anh từng gặp.",
+    "Anh mong rằng mỗi ngày của em đều tràn ngập tiếng cười.",
+    "Cảm ơn em đã đến bên anh."
 ];
 
 let messageIndex = 0;
@@ -26,27 +25,34 @@ function typeWriter() {
         } else {
             messageIndex++;
             charIndex = 0;
-            typingText.innerHTML += "<br><br>"; // Xuống dòng sau mỗi lời chúc
-            setTimeout(typeWriter, 1000); // Dừng 1 giây trước khi hiển thị lời chúc tiếp theo
+            typingText.innerHTML += "<br><br>";
+            setTimeout(typeWriter, 1000); // Thời gian chờ giữa các câu
         }
     } else {
-        nextButton.classList.remove('hidden');
+        nextButton.style.display = 'block';
     }
 }
 
 startScreen.addEventListener('click', () => {
-    startScreen.classList.add('hidden');
-    contentScreen.classList.remove('hidden');
+    startScreen.style.display = 'none';
+    mainContent.style.display = 'flex';
+    typeWriter();
+});
+
+heart.addEventListener('click', () => {
+    startScreen.style.display = 'none';
+    mainContent.style.display = 'flex';
     typeWriter();
 });
 
 nextButton.addEventListener('click', () => {
-    contentScreen.classList.add('hidden');
-    finalScreen.classList.remove('hidden');
+    // Chuyển sang giao diện tiếp theo (bạn có thể thêm mã ở đây)
+    alert("Chuyển sang giao diện tiếp theo!");
 });
 
-galleryImages.forEach(image => {
-    image.addEventListener('click', () => {
-        window.open(image.src, '_blank'); // Mở ảnh trong tab mới
+imageBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+        const img = box.querySelector('img');
+        window.open(img.src, '_blank');
     });
 });
