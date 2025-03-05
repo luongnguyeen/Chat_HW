@@ -58,6 +58,17 @@ body {
     cursor: pointer;
 }
 
+.right {
+    position: relative;
+}
+
+#treeCanvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
 footer {
     position: fixed;
     bottom: 10px;
