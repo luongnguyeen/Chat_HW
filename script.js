@@ -49,47 +49,6 @@ function drawTree() {
         let color = colors[Math.floor(Math.random() * colors.length)];
         drawHeart(x, y, color);
     }
-    
-    animateFallingHearts();
-}
-
-function animateFallingHearts() {
-    const canvas = document.getElementById("treeCanvas");
-    const ctx = canvas.getContext("2d");
-    let hearts = [];
-    const colors = ["red", "pink", "purple", "orange", "yellow"];
-    
-    for (let i = 0; i < 5; i++) {
-        hearts.push({
-            x: 120 + Math.random() * 60,
-            y: 100,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            speed: Math.random() * 2 + 1
-        });
-    }
-    
-    function drawHeart(heart) {
-        ctx.fillStyle = heart.color;
-        ctx.beginPath();
-        ctx.moveTo(heart.x, heart.y);
-        ctx.bezierCurveTo(heart.x - 10, heart.y - 10, heart.x - 20, heart.y + 5, heart.x, heart.y + 20);
-        ctx.bezierCurveTo(heart.x + 20, heart.y + 5, heart.x + 10, heart.y - 10, heart.x, heart.y);
-        ctx.fill();
-    }
-    
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawTree();
-        
-        hearts.forEach(heart => {
-            heart.y += heart.speed;
-            drawHeart(heart);
-        });
-        
-        requestAnimationFrame(animate);
-    }
-    
-    animate();
 }
 
 function nextScreen() {
