@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Women's Day</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -12,24 +13,21 @@
         <div class="heart"></div>
         <p class="start-text">Cùng khám phá Emmm nhé</p>
     </div>
+
     <div id="main-content" class="hidden">
         <div class="container">
-            <div class="left-column">
-                <p id="typing-text"></p>
+            <div class="column left">
+                <p id="greeting-text"></p>
             </div>
-            <div class="right-column">
-                <div class="image-box">
-                    <img src="sample1.jpg" alt="Hình ảnh 1" class="gallery-image">
-                    <img src="sample2.jpg" alt="Hình ảnh 2" class="gallery-image">
-                    <img src="sample3.jpg" alt="Hình ảnh 3" class="gallery-image">
+            <div class="column right">
+                <div id="tree-container" class="hidden">
+                    <div id="tree"></div>
                 </div>
             </div>
         </div>
         <button id="next-button" class="hidden">Tiếp tục</button>
     </div>
-    <footer>
-        Made by 💓 L.Nguyeen
-    </footer>
-    <script src="script.js"></script>
+
+    <footer>Made by 💓 L.Nguyeen</footer>
 </body>
 </html>
