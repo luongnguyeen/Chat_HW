@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Women's Day</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script defer src="script.js"></script>
 </head>
 <body>
+    <!-- Start Screen -->
     <div id="start-screen" class="screen">
-        <img src="assets/heart.png" alt="Heart" class="heart">
-        <p class="hint-text" onclick="startExperience()">Cùng khám phá Emmm nhé</p>
+        <div class="heart"></div>
+        <p class="prompt">Cùng khám phá Emmm nhé</p>
     </div>
 
+    <!-- Main Content -->
     <div id="main-content" class="hidden">
         <div class="container">
-            <div class="left">
-                <p id="greeting-text"></p>
+            <div class="left-column">
+                <p id="typing-text"></p>
             </div>
-            <div class="right">
-                <canvas id="treeCanvas" class="hidden"></canvas>
+            <div class="right-column">
+                <div class="image-box">
+                    <img src="image1.jpg" class="gallery-item" onclick="openImage(this.src)">
+                    <img src="image2.jpg" class="gallery-item" onclick="openImage(this.src)">
+                    <img src="image3.jpg" class="gallery-item" onclick="openImage(this.src)">
+                </div>
             </div>
         </div>
-        <button id="next-btn" class="hidden" onclick="nextScreen()">Tiếp tục</button>
+        <button id="next-btn" class="hidden">Tiếp tục</button>
     </div>
-    
-    <footer>
-        Made by 💓 L.Nguyeen
-    </footer>
-    
-    <script src="script.js"></script>
+
+    <footer>Made by 💓 L.Nguyeen</footer>
+
+    <!-- Modal for Image Display -->
+    <div id="image-modal" class="modal hidden">
+        <span class="close" onclick="closeImage()">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
 </body>
 </html>
