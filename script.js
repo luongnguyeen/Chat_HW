@@ -1,3 +1,5 @@
+let hearts = [];
+
 function startExperience() {
     document.getElementById("start-screen").classList.add("hidden");
     document.getElementById("main-content").classList.remove("hidden");
@@ -23,6 +25,12 @@ function typeText(elementId, text, speed, callback) {
 }
 
 function drawTree() {
+    const canvas = document.getElementById("treeCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = 400;
+    canvas.height = 500;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     // Vẽ thân cây
     ctx.beginPath();
     ctx.moveTo(150, 400);
@@ -52,6 +60,8 @@ function drawTree() {
 }
 
 function drawHeart(x, y, size, color) {
+    const canvas = document.getElementById("treeCanvas");
+    const ctx = canvas.getContext("2d");
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(Math.PI / 4);
@@ -65,13 +75,15 @@ function drawHeart(x, y, size, color) {
 }
 
 function animateHearts() {
-    ctx.clearRect(0, 0, treeCanvas.width, treeCanvas.height);
+    const canvas = document.getElementById("treeCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawTree(); // Vẽ lại cây để không bị mất cành
 
     hearts.forEach((heart, index) => {
         drawHeart(heart.x, heart.y, heart.size, heart.color);
         heart.y += heart.speed;
-        if (heart.y > treeCanvas.height) {
+        if (heart.y > canvas.height) {
             hearts.splice(index, 1);
             const x = Math.random() * 200 + 50;
             const y = Math.random() * 100 + 50;
