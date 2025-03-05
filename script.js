@@ -1,62 +1,52 @@
-// script.js
-function startExperience() {
-    document.getElementById("start-screen").classList.add("hidden");
-    document.getElementById("main-content").classList.remove("hidden");
-    showMessage();
-}
+const startScreen = document.getElementById('start-screen');
+const contentScreen = document.getElementById('content-screen');
+const finalScreen = document.getElementById('final-screen');
+const heart = document.querySelector('.heart');
+const startText = document.querySelector('.start-text');
+const typingText = document.getElementById('typing-text');
+const nextButton = document.getElementById('next-button');
+const galleryImages = document.querySelectorAll('.gallery-image');
 
-function showMessage() {
-    const messages = [
-        "Chúc mừng ngày 8/3!", 
-        "Chúc bạn luôn vui vẻ và hạnh phúc!", 
-        "Mọi điều tốt đẹp nhất sẽ đến với bạn!"
-    ];
-    let index = 0;
-    let textContainer = document.getElementById("message");
-    textContainer.innerHTML = "";
-    
-    function typeMessage() {
-        if (index < messages.length) {
-            let msg = messages[index];
-            let i = 0;
-            let interval = setInterval(() => {
-                if (i < msg.length) {
-                    textContainer.innerHTML += msg[i];
-                    i++;
-                } else {
-                    clearInterval(interval);
-                    textContainer.innerHTML += "<br>";
-                    index++;
-                    setTimeout(typeMessage, 1000);
-                }
-            }, 100);
+const messages = [
+    "Chúc em ngày 8/3 thật nhiều niềm vui và hạnh phúc!",
+    "Em là người con gái tuyệt vời nhất mà anh từng gặp.",
+    "Anh yêu em nhiều lắm!",
+    // Thêm lời chúc của bạn vào đây
+];
+
+let messageIndex = 0;
+let charIndex = 0;
+
+function typeWriter() {
+    if (messageIndex < messages.length) {
+        if (charIndex < messages[messageIndex].length) {
+            typingText.innerHTML += messages[messageIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeWriter, 50); // Tốc độ gõ chữ
         } else {
-            document.getElementById("next-button").classList.remove("hidden");
-            showTree();
+            messageIndex++;
+            charIndex = 0;
+            typingText.innerHTML += "<br><br>"; // Xuống dòng sau mỗi lời chúc
+            setTimeout(typeWriter, 1000); // Dừng 1 giây trước khi hiển thị lời chúc tiếp theo
         }
+    } else {
+        nextButton.classList.remove('hidden');
     }
-    typeMessage();
 }
 
-function showTree() {
-    document.getElementById("tree-container").classList.remove("hidden");
-    startFallingHearts();
-}
+startScreen.addEventListener('click', () => {
+    startScreen.classList.add('hidden');
+    contentScreen.classList.remove('hidden');
+    typeWriter();
+});
 
-function startFallingHearts() {
-    setInterval(() => {
-        let heart = document.createElement("div");
-        heart.innerHTML = "❤️";
-        heart.style.position = "absolute";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = "0px";
-        heart.style.fontSize = "24px";
-        heart.style.animation = "fall 3s linear";
-        document.body.appendChild(heart);
-        setTimeout(() => { heart.remove(); }, 3000);
-    }, 500);
-}
+nextButton.addEventListener('click', () => {
+    contentScreen.classList.add('hidden');
+    finalScreen.classList.remove('hidden');
+});
 
-function nextScreen() {
-    alert("Chúc bạn một ngày 8/3 thật vui vẻ và ý nghĩa!");
-}
+galleryImages.forEach(image => {
+    image.addEventListener('click', () => {
+        window.open(image.src, '_blank'); // Mở ảnh trong tab mới
+    });
+});
