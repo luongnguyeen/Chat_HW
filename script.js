@@ -1,46 +1,56 @@
-// ... (các JavaScript khác) ...
+const startScreen = document.getElementById('start-screen');
+const mainScreen = document.getElementById('main-screen');
+const heart = document.querySelector('.heart');
+const message = document.querySelector('.message');
+const greeting = document.getElementById('greeting');
+const imageGallery = document.getElementById('image-gallery');
+const nextButton = document.getElementById('next-button');
+const footer = document.querySelector('footer');
 
-const imageSphere = document.querySelector('.image-sphere');
-const images = [
-    'image1.jpg', // Thay thế bằng đường dẫn ảnh của bạn
-    'image2.jpg',
-    'image3.jpg',
-    'image4.jpg',
-    'image5.jpg',
-    'image6.jpg',
-    'image7.jpg',
-    'image8.jpg',
+const greetings = [
+    "Chúc mừng ngày Quốc tế Phụ nữ 8/3!",
+    "Chúc em luôn xinh đẹp, rạng rỡ và hạnh phúc.",
+    "Anh mong rằng em sẽ có một ngày thật ý nghĩa và tràn đầy niềm vui.",
+    "Em là người đặc biệt nhất trong trái tim anh."
 ];
 
-function createSphere() {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, imageSphere.offsetWidth / imageSphere.offsetHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(imageSphere.offsetWidth, imageSphere.offsetHeight);
-    imageSphere.appendChild(renderer.domElement);
+let greetingIndex = 0;
 
-    const geometry = new THREE.SphereGeometry(150, 32, 32);
-    const materials = images.map(image => {
-        const texture = new THREE.TextureLoader().load(image);
-        return new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
-    });
-    const sphere = new THREE.Mesh(geometry, materials);
-    scene.add(sphere);
-
-    camera.position.z = 300;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        sphere.rotation.x += 0.005;
-        sphere.rotation.y += 0.005;
-        renderer.render(scene, camera);
+function showGreeting() {
+    if (greetingIndex < greetings.length) {
+        greeting.textContent += greetings[greetingIndex] + " ";
+        greetingIndex++;
+        setTimeout(showGreeting, 500); // Tốc độ gõ chữ
+    } else {
+        createImageGallery();
     }
-    animate();
-
-    imageSphere.addEventListener('click', () => {
-        const selectedImage = images[Math.floor(Math.random() * images.length)];
-        alert(`Ảnh được chọn: ${selectedImage}`);
-    });
 }
 
-createSphere();
+function createImageGallery() {
+    const imageCount = 6; // Số lượng ảnh
+    const radius = 150; // Bán kính hình cầu
+
+    for (let i = 0; i < imageCount; i++) {
+        const img = document.createElement('img');
+        img.src = `images/image${i + 1}.jpg`; // Thay đổi đường dẫn ảnh
+        const theta = Math.PI * 2 / imageCount * i;
+        const x = Math.cos(theta) * radius;
+        const z = Math.sin(theta) * radius;
+        img.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+        imageGallery.appendChild(img);
+    }
+}
+
+heart.addEventListener('click', () => {
+    startScreen.classList.add('hidden');
+    mainScreen.classList.remove('hidden');
+    showGreeting();
+    footer.style.display = 'block';
+});
+
+message.addEventListener('click', () => {
+    startScreen.classList.add('hidden');
+    mainScreen.classList.remove('hidden');
+    showGreeting();
+    footer.style.display = 'block';
+});
