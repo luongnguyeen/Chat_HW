@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Women's Day</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-    <div id="start-screen" class="screen">
+    <div id="start-screen">
         <div class="heart"></div>
         <p class="start-text" onclick="startExperience()">Cùng khám phá Emmm nhé</p>
     </div>
-
+    
     <div id="main-content" class="hidden">
-        <div class="container">
-            <div class="column left">
-                <p id="greeting-text"></p>
-            </div>
-            <div class="column right">
-                <div id="tree-container" class="hidden">
-                    <div id="tree"></div>
-                </div>
+        <div class="left-column">
+            <p id="message"></p>
+        </div>
+        <div class="right-column">
+            <div id="tree-container" class="hidden">
+                <div id="tree"></div>
             </div>
         </div>
-        <button id="next-button" class="hidden" onclick="nextScreen()">Tiếp tục</button>
     </div>
-
+    
+    <div id="next-button" class="hidden">
+        <button onclick="nextScreen()">Tiếp tục</button>
+    </div>
+    
     <footer>Made by 💓 L.Nguyeen</footer>
+    <script src="script.js"></script>
 </body>
 </html>
